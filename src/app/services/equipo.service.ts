@@ -1,9 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http'
+import { Equipo } from "../models/Equipo";
+import { EquipoComponent } from "../components/equipo/equipo.component";
 @Injectable({
   providedIn: 'root'
 })
 export class EquipoService {
 
-  constructor() { }
+  api = "http://localhost:3000/api/equipos";
+
+  equipos !: Equipo[];
+
+  constructor(private http: HttpClient) { }
+
+  //Obtenemos todos los equipos de la base de datos
+  getEquipos(){
+    return this.http.get<Equipo[]>(this.api);
+  }
+
 }

@@ -4,7 +4,18 @@
             <div class="col-md-12">
                 <h1 class="text-center text-uppercase">Todos los equipos</h1>
             </div>
-            <div class="col d-flex flex-wrap justify-content-around" id="central"></div>
+            <div class="col d-flex flex-wrap justify-content-around" id="central">
+                <div class="card mb-3" *ngFor="let equipo of equipos" style="width: 18rem;">
+                    <img src="assets/img/{{ equipo.foto }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"> {{ equipo.modelo }}</h5>
+                        <p class="card-text"><strong>Precio: {{ equipo.precio }}€ </strong></p>
+                        <p class="card-text"><strong>CPU: {{ equipo.cpu }} </strong></p>
+                        <p class="card-text"><strong>RAM: {{ equipo.ram }} </strong> GB</p>
+                        <a class="btn btn-primary" id="btn-verDetalles">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </main>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-equipo',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./equipo.component.css']
 })
 export class EquipoComponent {
+
+
 
 }
