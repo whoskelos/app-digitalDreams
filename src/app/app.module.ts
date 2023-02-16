@@ -8,6 +8,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { EquipoComponent } from './components/equipo/equipo.component';
 import { HomeComponent } from './components/home/home.component';
 import { VistaEquiposComponent } from './components/vista-equipos/vista-equipos.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { VistaEquiposComponent } from './components/vista-equipos/vista-equipos.
     EquipoComponent,
     HomeComponent,
     VistaEquiposComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

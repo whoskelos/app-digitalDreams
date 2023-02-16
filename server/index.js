@@ -12,7 +12,8 @@ app.use(express.json());
 app.use(cors({origin:'http://localhost:4200'}));
 
 //RUTAS
-app.use('/api/equipos',require('./routes/equipos.routes'));
+app.use('/api/equipos',require('./routes/equipos.routes'))
+app.use('/api/users',require('./routes/users.routes'));
 
 //ARRANCAR EL SERVIDOR
 app.listen(app.get('port'), () => {
