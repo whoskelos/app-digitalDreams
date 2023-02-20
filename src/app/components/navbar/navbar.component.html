@@ -12,16 +12,20 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/equipos" routerLinkActive="active">Equipos</a>
+                    </li>
+                </ul>
                 <ul class="navbar-nav ms-auto mt-2 mt-lg-0" id="enlacesNavbar">
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/home" aria-current="page">Home<span
-                                class="visually-hidden">(current)</span></a>
+                        <a class="nav-link" routerLink="/auth/login" routerLinkActive="active">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/equipos">Equipos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/login">Login</a>
+                        <a class="nav-link" routerLink="/auth/logout" routerLinkActive="active">Logout</a>
                     </li>
                 </ul>
             </div>
