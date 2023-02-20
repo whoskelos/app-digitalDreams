@@ -5,6 +5,7 @@ import { User } from 'src/app/models/user';
 import { NgForm } from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
 
   onRegister(form: NgForm) {
     this.authService.register(form.value).subscribe(res => {
-      this.router.navigateByUrl('/auth/login');
+      this.router.navigateByUrl('/home');
     });
   }
 

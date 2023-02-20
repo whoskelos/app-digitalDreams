@@ -1,1 +1,40 @@
-<p>Vista detallada equipo funciona</p>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 d-flex justify-content-center">
+            <img src="assets/img/{{ equipo.foto }}" alt="Foto del equipo seleccionado">
+        </div>
+        <div class="col-md-6 mt-3 d-flex justify-content-center align-items-center flex-column">
+            <div class="tabs-equipo d-flex flex-column">
+                <div class="tabs d-flex">
+                    <div class="opciones-equipo caracteristicasTab" (click)="mostrarCaracteristicas()">
+                        <a>Caracteristicas</a>
+                    </div>
+                    <div class="opciones-equipo enlacesTab" (click)="mostrarEnlace()">
+                        <a>Enlaces</a>
+                    </div>
+                </div>
+                <div class="card" id="tarjetaEquipo">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ equipo.modelo }}</h4>
+                        <h6 class="card-subtitle mb-2 text-primary">{{ equipo.precio }} $</h6>
+                    </div>
+                    <div class="txtCaracteristicas" *ngIf="oculto; else enlaces">
+                        <ul>
+                            <li><strong>Sistema Operativo:</strong> {{ equipo.so }}</li>
+                            <li><strong>CPU:</strong> {{ equipo.cpu }}</li>
+                            <li><strong>RAM:</strong> {{ equipo.ram }} GB</li>
+                            <li><strong>Almacenamiento:</strong> {{ equipo.almacenamiento }} GB</li>
+                        </ul>
+                    </div>
+                    <ng-template #enlaces>
+                        <div class="txtEnlaces">
+                            <h5>Enlace de compra</h5>
+                            <p><a href="{{equipo.enlace}}" target="_blank">Ir a comprar</a></p>
+                        </div>
+                    </ng-template>
+                </div>
+                <div class="my-2" id="divFavorito" class="d-flex justify-content-center"><img class="m-3" src="assets/img/favorito.png" alt="boton para marcar como favorito" (click)="marcarFavorito(equipo._id)"></div>
+            </div>
+        </div>
+    </div>
+</div>

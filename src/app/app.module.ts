@@ -11,6 +11,8 @@ import { HomeComponent } from './components/home/home.component';
 import { VistaEquiposComponent } from './components/vista-equipos/vista-equipos.component';
 import { LoginComponent } from './components/login/login.component';
 
+import { AuthGuard } from './auth/auth.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,9 @@ import { LoginComponent } from './components/login/login.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

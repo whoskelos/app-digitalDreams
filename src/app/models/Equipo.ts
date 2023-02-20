@@ -1,5 +1,6 @@
 export class Equipo{
     constructor (
+    public _id: string,
     public portatil: string,
     public modelo:string,
     public precio:number,

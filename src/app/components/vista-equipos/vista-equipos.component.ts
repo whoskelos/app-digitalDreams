@@ -22,9 +22,4 @@ export class VistaEquiposComponent {
     this.equipoService.getEquipos()
     .subscribe(equipos => this.equipos = equipos);
   }
-
-  //funcion para el boton ver detalles 
-  verDetalle():void {
-    
-  }
 }

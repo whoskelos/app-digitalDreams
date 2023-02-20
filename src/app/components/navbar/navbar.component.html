@@ -21,12 +21,19 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto mt-2 mt-lg-0" id="enlacesNavbar">
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/auth/login" routerLinkActive="active">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/auth/logout" routerLinkActive="active">Logout</a>
-                    </li>
+                    <ng-container *ngIf="!authService.loggedIn() else logout">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/auth/login" routerLinkActive="active">Iniciar Sesion</a>
+                        </li>
+                    </ng-container>
+                    <ng-template #logout>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="" routerLinkActive="active"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="" (click)="authService.logout()">Cerrar Sesion</a>
+                        </li>
+                    </ng-template>
                 </ul>
             </div>
         </div>

@@ -1,0 +1,60 @@
+/*
+*CARD DE LOS ENLACES Y LAS CARACTERISTICAS
+*/
+.card-subtitle {
+    font-size: 2em !important;
+}
+
+.opciones-equipo{
+    padding: 10px !important;
+    background: #509cfa !important;
+    color: #fff;
+    text-align: center;
+}
+
+.opciones-equipo a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+.caracteristicasTab:hover{
+    background: #dadada !important;
+    color: rgb(79, 120, 241);
+}
+.TabSelected{
+    background: #dadada !important;
+    color: rgb(79, 120, 241);
+}
+
+.enlacesTab:hover{
+    background: #dadada !important;
+    color: rgb(79, 120, 241);
+}
+
+.enlacesTab {
+    flex-grow: 2;
+    border-radius: 0px 10px 10px 0px !important;
+}
+.caracteristicasTab {
+    border-radius: 10px 0px 0px 10px !important;
+}
+
+.txtCaracteristicas{
+    padding: 7px;
+}
+.txtEnlaces {
+    text-align: center;
+}
+
+.oculto {
+    display: none;
+}
+
+/*
+*ICONO para marcar como favorito
+*/
+#divFavorito img {
+    width: 60px;
+    cursor: pointer;
+}
