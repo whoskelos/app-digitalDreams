@@ -32,6 +32,7 @@ userCtrl.crearUser = async (req, res) => {
         const dataUser = {
           name: user.name,
           email: user.email,
+          admin: user.admin,
           accessToken: accessToken,
           expiresIn: expiresIn,
         };

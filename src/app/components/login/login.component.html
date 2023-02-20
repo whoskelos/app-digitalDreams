@@ -4,7 +4,7 @@
             <h2 class="text-center text-dark mt-5">Iniciar sesión</h2>
             <div class="card my-5">
 
-                <form class="card-body cardbody-color p-lg-5">
+                <form #f="ngForm" class="card-body cardbody-color p-lg-5" (ngSubmit)="onLogin(f)">
 
                     <div class="text-center">
                         <img src="assets/img/login.png"
@@ -14,10 +14,10 @@
 
                     <div class="mb-3">
                         <input type="email" name="email"  class="form-control" id="Username" aria-describedby="emailHelp"
-                            placeholder="example@gmail.com">
+                            placeholder="example@gmail.com" ngModel required>
                     </div>
                     <div class="mb-3">
-                        <input type="password" name="password"   class="form-control" id="password" placeholder="Escriba su password">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Escriba su password" ngModel required>
                     </div>
                     <div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-100">Entrar</button>
                     </div>
