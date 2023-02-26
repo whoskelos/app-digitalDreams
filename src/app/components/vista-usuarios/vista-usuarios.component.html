@@ -1,22 +1,33 @@
 <div class="container">
     <div class="row my-3">
         <div class="col-md-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/home" routerLinkActive="active">Home</a></li>
+                <li class="breadcrumb-item"><a routerLink="/equipos" routerLinkActive="active">Equipos</a></li>
+                <li class="breadcrumb-item"> <a routerLink="/usuarios" routerLinkActive="active">Usuarios</a></li>
+            </ol>
             <div class="card">
                 <div class="card-body">
                     <h1>Formulario</h1>
                     <form #formUsuario="ngForm" (ngSubmit)="addUsuario(formUsuario)">
                         <input type="hidden" name="_id" [(ngModel)]="userService.usuarioSeleccionado._id">
                         <div class="form-group mb-3">
-                            <input type="text" name="name" id="inputName" class="form-control" placeholder="Introduce tu nombre completo" [(ngModel)]="userService.usuarioSeleccionado.name" required>
+                            <input type="text" name="name" id="inputName" class="form-control"
+                                placeholder="Introduce tu nombre completo"
+                                [(ngModel)]="userService.usuarioSeleccionado.name" required>
                         </div>
                         <div class="form-group mb-3">
-                            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Introduce tu email" [(ngModel)]="userService.usuarioSeleccionado.email" required>
+                            <input type="email" name="email" id="inputEmail" class="form-control"
+                                placeholder="Introduce tu email" [(ngModel)]="userService.usuarioSeleccionado.email"
+                                required>
                         </div>
-                        <div class="form-group mb-3">
-                            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Introduzca una password" [(ngModel)]="userService.usuarioSeleccionado.password" required>
+                        <div class="form-group mb-3" *ngIf="!userService.usuarioSeleccionado._id">
+                            <input type="password" name="password" id="inputPassword" class="form-control"
+                                placeholder="Introduzca una password"
+                                [(ngModel)]="userService.usuarioSeleccionado.password" required>
                         </div>
                         <button type="submit" class="btn btn-success me-2">Guardar</button>
-                        <button type="reset" class="btn btn-primary">Reset</button>
+                        <button type="button" (click)="resetForm(formUsuario)" class="btn btn-primary">Reset</button>
                     </form>
                 </div>
             </div>
@@ -35,10 +46,12 @@
                     <tr *ngFor="let usuario of userService.usuarios">
                         <td>{{ usuario.name }}</td>
                         <td>{{ usuario.email }}</td>
-                        <td>{{ usuario.createdAt }}</td>
+                        <td>{{ usuario.createdAt | date }}</td>
                         <td>
-                            <button type="button" (click)="editarUser(usuario)" class="btn btn-sm btn-light me-2"><i class="fa-solid fa-pen-to-square"></i></button>
-                            <button type="button" (click)="eliminarUser(usuario._id)" class="btn btn-sm btn-warning"><i class="fa-solid fa-trash-can"></i></button>
+                            <button type="button" (click)="editarUser(usuario)" class="btn btn-sm btn-light me-2"><i
+                                    class="fa-solid fa-pen-to-square"></i></button>
+                            <button type="button" (click)="eliminarUser(usuario._id)" class="btn btn-sm btn-warning"><i
+                                    class="fa-solid fa-trash-can"></i></button>
                         </td>
                     </tr>
                 </tbody>

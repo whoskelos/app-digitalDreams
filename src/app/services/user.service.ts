@@ -23,7 +23,7 @@ export class UserService {
   }
 
   crearUsuario(usuario: User) {
-    return this.http.post(`${this.api}/signup`,usuario);
+    return this.http.post(`${this.api}/registro`,usuario);
   }
 
   deleteUsuario(id: any) {

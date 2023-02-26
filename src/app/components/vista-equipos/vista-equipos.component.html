@@ -2,6 +2,11 @@
     <div class="container">
         <div class="row mt-3">
             <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/home" routerLinkActive="active">Home</a></li>
+                    <li class="breadcrumb-item"><a routerLink="/equipos" routerLinkActive="active">Equipos</a></li>
+                    <li class="breadcrumb-item"> <a routerLink="/usuarios" routerLinkActive="active">Usuarios</a></li>
+                </ol>
                 <h1 class="text-center text-uppercase">Todos los equipos</h1>
             </div>
             <div class="col d-flex flex-wrap justify-content-center" id="central">
@@ -12,8 +17,10 @@
                         <p class="card-text"><strong>Precio: {{ equipo.precio }}€ </strong></p>
                         <p class="card-text"><strong>CPU: {{ equipo.cpu }} </strong></p>
                         <p class="card-text"><strong>RAM: {{ equipo.ram }} </strong> GB</p>
-                        <button type="button" routerLink="/equipos/{{equipo._id}}" class="btn btn-success me-2"><img src="assets/img/editar.png" alt="icono editar" width="25"></button>
-                        <button type="button" class="btn btn-danger" (click)="eliminarEquipo(equipo._id)"><img src="assets/img/eliminar.png" alt="icono editar" width="25"></button>
+                        <button type="button" routerLink="/equipos/{{equipo._id}}" class="btn btn-success me-2"><img
+                                src="assets/img/editar.png" alt="icono editar" width="25"></button>
+                        <button type="button" class="btn btn-danger" (click)="eliminarEquipo(equipo._id)"><img
+                                src="assets/img/eliminar.png" alt="icono editar" width="25"></button>
                     </div>
                 </div>
             </div>

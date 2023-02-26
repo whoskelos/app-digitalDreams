@@ -57,7 +57,6 @@ export class EquipoComponent implements OnInit {
           timer: 1000
         })
       });
-      this.router.navigateByUrl('/equipos');
   }
 }
 

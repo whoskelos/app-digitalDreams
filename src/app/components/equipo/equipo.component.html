@@ -1,5 +1,16 @@
 <div class="container">
     <div class="row my-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/home" routerLinkActive="active">Home</a></li>
+            <li class="breadcrumb-item">
+                <a routerLink="/equipos" routerLinkActive="active">Equipos</a>
+                <ol class="breadcrum">
+                    <li class="breadcrum-item">
+                        <a routerLink="/equipos/{{ equipo._id }}">{{ equipo._id }}</a>
+                    </li>
+                </ol>
+            </li>
+        </ol>
         <div class="col-md-6">
             <img src="assets/img/{{ equipo.foto }}" class="img-fluid rounded" alt="Foto del equipo seleccionado">
         </div>

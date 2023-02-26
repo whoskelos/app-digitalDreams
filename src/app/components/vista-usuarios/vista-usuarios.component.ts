@@ -34,6 +34,8 @@ export class VistaUsuariosComponent implements OnInit {
             showConfirmButton: false,
             timer: 1000
           });
+          this.listarUsuarios();
+          form.reset();
         });
     } else {
       this.userService.crearUsuario(form.value)
@@ -69,6 +71,11 @@ export class VistaUsuariosComponent implements OnInit {
 
   editarUser(usuario: User) {
     this.userService.usuarioSeleccionado = usuario;
+  }
+
+  resetForm(form: NgForm) {
+    form.reset();
+    this.listarUsuarios();
   }
 
 }
