@@ -18,7 +18,15 @@ export class EquipoService {
   }
 
   getEquipoById(id: string) {
-    return this.http.get<Equipo>(`${this.api}/${id}`);
+    return this.http.get<any>(`${this.api}/${id}`);
+  }
+
+  deleteEquipo(id: string) {
+    return this.http.delete(`${this.api}/${id}`);
+  }
+
+  editEquipo(id: string, equipo: any) {
+    return this.http.put(`${this.api}/${id}`,equipo);
   }
 
 }

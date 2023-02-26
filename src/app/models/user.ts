@@ -1,9 +1,9 @@
 export interface User {
-    id: number,
+    _id?: string,
     name: string,
     email: string,
     password: string,
-    admin: boolean,
-    favoritos: string[],
-
+    admin?: boolean,
+    favoritos?: string[],
+    createdAt: string
 }

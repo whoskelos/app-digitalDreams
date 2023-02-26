@@ -1,39 +1,40 @@
 <div class="container">
-    <div class="row mt-5">
-        <div class="col-md-6 d-flex justify-content-center">
-            <img src="assets/img/{{ equipo.foto }}" alt="Foto del equipo seleccionado">
+    <div class="row my-3">
+        <div class="col-md-6">
+            <img src="assets/img/{{ equipo.foto }}" class="img-fluid rounded" alt="Foto del equipo seleccionado">
         </div>
-        <div class="col-md-6 mt-3 d-flex justify-content-center align-items-center flex-column">
-            <div class="tabs-equipo d-flex flex-column">
-                <div class="tabs d-flex">
-                    <div class="opciones-equipo caracteristicasTab" (click)="mostrarCaracteristicas()">
-                        <a>Caracteristicas</a>
-                    </div>
-                    <div class="opciones-equipo enlacesTab" (click)="mostrarEnlace()">
-                        <a>Enlaces</a>
-                    </div>
-                </div>
-                <div class="card" id="tarjetaEquipo">
-                    <div class="card-body">
-                        <h4 class="card-title">{{ equipo.modelo }}</h4>
-                        <h6 class="card-subtitle mb-2 text-primary">{{ equipo.precio }} $</h6>
-                    </div>
-                    <div class="txtCaracteristicas" *ngIf="oculto; else enlaces">
-                        <ul>
-                            <li><strong>Sistema Operativo:</strong> {{ equipo.so }}</li>
-                            <li><strong>CPU:</strong> {{ equipo.cpu }}</li>
-                            <li><strong>RAM:</strong> {{ equipo.ram }} GB</li>
-                            <li><strong>Almacenamiento:</strong> {{ equipo.almacenamiento }} GB</li>
-                        </ul>
-                    </div>
-                    <ng-template #enlaces>
-                        <div class="txtEnlaces">
-                            <h5>Enlace de compra</h5>
-                            <p><a href="{{equipo.enlace}}" target="_blank">Ir a comprar</a></p>
+        <div class="col-md-6">
+            <div class="card border-light mb-3" style="width: 30rem;">
+                <div class="card-header">Editando: {{ equipo._id }}</div>
+                <div class="card-body">
+                    <form #formEdit="ngForm" (ngSubmit)="editarEquipo(formEdit.value)">
+                        <div class="form-group d-flex flex-column align-items-center">
+                            <div class="form-floating mb-3">
+                                <input type="text" name="modelo" class="form-control" id="floatingInputModelo"
+                                    placeholder="Acer aspire" [(ngModel)]="datosPeli.modelo" required>
+                                <label for="floatingInputModelo">Modelo</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="number" name="precio" class="form-control" id="floatingInputPrecio"
+                                    placeholder="999" [(ngModel)]="datosPeli.precio" required>
+                                <label for="floatingInputPrecio">Precio</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="cpu" class="form-control" id="floatingInputCpu"
+                                    placeholder="password" [(ngModel)]="datosPeli.cpu" required>
+                                <label for="floatingInputCpu">CPU</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="number" name="ram" class="form-control" id="floatingInputRam"
+                                    placeholder="16" [(ngModel)]="datosPeli.ram" required>
+                                <label for="floatingInputRam">RAM</label>
+                            </div>
+                            <div class="d-grid gap-2 mt-2">
+                                <button class="btn btn-lg btn-success" type="submit">Editar</button>
+                            </div>
                         </div>
-                    </ng-template>
+                    </form>
                 </div>
-                <div class="my-2" id="divFavorito" class="d-flex justify-content-center"><img class="m-3" src="assets/img/favorito.png" alt="boton para marcar como favorito" (click)="marcarFavorito(equipo._id)"></div>
             </div>
         </div>
     </div>

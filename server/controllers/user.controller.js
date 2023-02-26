@@ -76,19 +76,19 @@ userCtrl.getUser = async (req, res, next) => {
   }
 };
 
-// userCtrl.editarUser = async (req, res) => {
-//   const { id } = req.params;
-//   const user = {
-//     email: req.body.email,
-//     password: req.body.password,
-//   };
-//   await User.findByIdAndUpdate(req.params.id, { $set: user }, { new: true });
-//   res.json({ status: "User actualizado" });
-// };
+userCtrl.editarUser = async (req, res) => {
+  const { id } = req.params;
+  const user = {
+    name: req.body.name,
+    email: req.body.email
+  };
+  await User.findByIdAndUpdate(id, { $set: user }, { new: true });
+  res.json({ status: "User actualizado" });
+};
 
-// userCtrl.eliminarUser = async (req, res) => {
-//   await User.findByIdAndDelete(req.params.id);
-//   res.json({ status: "User eliminado" });
-// };
+userCtrl.eliminarUser = async (req, res) => {
+  await User.findByIdAndDelete(req.params.id);
+  res.json({ status: "User eliminado" });
+};
 
 module.exports = userCtrl;

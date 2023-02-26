@@ -12,6 +12,7 @@ import { VistaEquiposComponent } from './components/vista-equipos/vista-equipos.
 import { LoginComponent } from './components/login/login.component';
 
 import { AuthGuard } from './auth/auth.guard';
+import { VistaUsuariosComponent } from './components/vista-usuarios/vista-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AuthGuard } from './auth/auth.guard';
     EquipoComponent,
     HomeComponent,
     VistaEquiposComponent,
+    VistaUsuariosComponent,
   ],
   imports: [
     BrowserModule,

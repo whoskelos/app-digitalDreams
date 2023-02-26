@@ -30,11 +30,11 @@ export class AuthService {
             Swal.fire({
               icon: 'success',
               title: 'Registro',
-              text: 'Se ha registrado correctamente 😄',
+              text: 'Se ha registrado a '+ res.dataUser.name +' correctamente 😄',
             });
             //guardar token
             this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
-            this.username = res.dataUser.email;
+            this.username = res.dataUser.name;
           }
         },
         (err) => {
@@ -54,7 +54,6 @@ export class AuthService {
           if (res) {
             //guardar token
             this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
-
           }
         },
         (err) => {

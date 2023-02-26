@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Equipo } from 'src/app/models/Equipo';
 import { EquipoService } from 'src/app/services/equipo.service';
 
@@ -15,8 +15,23 @@ export class EquipoComponent implements OnInit {
 
   public id !: string;
   public equipo !: Equipo;
-  public oculto : boolean = true;
-  constructor(route: ActivatedRoute, public equipoService: EquipoService) {
+
+  datosPeli = {
+    portatil: "",
+    modelo: "",
+    precio: 0,
+    so: "",
+    cpu: "",
+    ram: 0,
+    almacenamiento: "",
+    gama: "",
+    valoracion: [],
+    opiniones: [],
+    foto: "",
+    enlace: ""
+  }
+
+  constructor(route: ActivatedRoute, private router:Router, public equipoService: EquipoService) {
     this.id = route.snapshot.params['id'];
   }
 
@@ -27,32 +42,22 @@ export class EquipoComponent implements OnInit {
   getEquipo() {
     this.equipoService.getEquipoById(this.id)
       .subscribe(equipo => {
-        console.log(equipo);
-        this.equipo = equipo
+        this.equipo = equipo;
+        this.datosPeli = equipo;
       });
   }
 
-  mostrarEnlace() {
-    if (this.oculto) {
-      this.oculto = false;
-    }
+  editarEquipo(valores: any) {
+    this.equipoService.editEquipo(this.id, this.datosPeli)
+      .subscribe(res => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Equipo editado correctamente!',
+          showConfirmButton: false,
+          timer: 1000
+        })
+      });
+      this.router.navigateByUrl('/equipos');
   }
-  mostrarCaracteristicas() {
-    if (!this.oculto) {
-      this.oculto = true;
-    }
-  }
-
-  marcarFavorito(id: string) {
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Ha marcado este equipo como favorito',
-      showConfirmButton: false,
-      timer: 1500
-    });
-  }
-
-
 }
 
