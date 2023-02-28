@@ -4,6 +4,8 @@ import { UserService } from 'src/app/services/user.service';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { User } from 'src/app/models/user';
+import { ToastrService } from 'ngx-toastr';
+import { ErrorService } from 'src/app/services/error.service';
 
 @Component({
   selector: 'app-vista-usuarios',
@@ -13,7 +15,10 @@ import { User } from 'src/app/models/user';
 export class VistaUsuariosComponent implements OnInit {
 
 
-  constructor(public userService: UserService, router: Router) { }
+  constructor(public userService: UserService,
+    private router: Router,
+    private toastr: ToastrService,
+    private errorService: ErrorService) { }
 
   ngOnInit(): void {
     this.listarUsuarios();
@@ -25,25 +30,36 @@ export class VistaUsuariosComponent implements OnInit {
   }
 
   addUsuario(form: NgForm) {
-    if (form.value._id) {
-      this.userService.actualizarUsuario(form.value)
-        .subscribe(res => {
-          Swal.fire({
-            icon: 'success',
-            title: 'Usuario editado correctamente!',
-            showConfirmButton: false,
-            timer: 1000
-          });
-          this.listarUsuarios();
-          form.reset();
-        });
+    if (form.value.email == '' || form.value.password == '' || form.value.name == '') {
+      this.toastr.error('Todos los campos son obligatorios', 'Error');
     } else {
-      this.userService.crearUsuario(form.value)
-        .subscribe(res => {
-          this.listarUsuarios();
-          form.reset();
-        });
+
+      if (form.value._id) {
+        this.userService.actualizarUsuario(form.value).subscribe({
+          next: (res) => {
+            this.toastr.success(`Usuario ${form.value.name} editado correctamente`, 'Usuario editado');
+            this.listarUsuarios();
+            this.resetForm(form);
+          },
+          error: (e) => {
+            this.errorService.msgError(e);
+          }
+        })
+      } else {
+        this.userService.crearUsuario(form.value)
+          .subscribe({
+            next: (res) => {
+              this.toastr.success(`Usuario ${form.value.email} creado correctamente`, 'Usuario Registrado');
+              this.listarUsuarios();
+              this.resetForm(form);
+            },
+            error: (e) => {
+              this.errorService.msgError(e);
+            }
+          });
+      }
     }
+
   }
 
   eliminarUser(id: any) {

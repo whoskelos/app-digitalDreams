@@ -19,10 +19,6 @@ const userSchema = new Schema({
       required: true,
       trim: true
     },
-    admin: Boolean,
-    favoritos: {
-        type: [String]
-      }
 },{
     timestamps: true
 });

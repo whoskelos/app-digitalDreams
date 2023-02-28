@@ -1,6 +1,7 @@
 const express  = require ('express');
 const app = express();
 const cors = require('cors');
+const morgan = require('morgan');
 
 const { mongoose } = require('./database');
 
@@ -8,6 +9,7 @@ const { mongoose } = require('./database');
 app.set('port',process.env.PORT || 3000);
 
 //MIDDLEWARES
+app.use(morgan("combined"));
 app.use(express.json());
 app.use(cors({origin:'http://localhost:4200'}));
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Equipo } from 'src/app/models/Equipo';
 import { EquipoService } from 'src/app/services/equipo.service';
 
@@ -31,7 +32,10 @@ export class EquipoComponent implements OnInit {
     enlace: ""
   }
 
-  constructor(route: ActivatedRoute, private router:Router, public equipoService: EquipoService) {
+  constructor(route: ActivatedRoute, 
+    private router:Router, 
+    public equipoService: EquipoService,
+    private toastr: ToastrService) {
     this.id = route.snapshot.params['id'];
   }
 
@@ -49,13 +53,10 @@ export class EquipoComponent implements OnInit {
 
   editarEquipo(valores: any) {
     this.equipoService.editEquipo(this.id, this.datosPeli)
-      .subscribe(res => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Equipo editado correctamente!',
-          showConfirmButton: false,
-          timer: 1000
-        })
+      .subscribe({
+        next: (res) => {
+          this.toastr.success('Equipo editado correctamente','Equipo editado');
+        }
       });
   }
 }

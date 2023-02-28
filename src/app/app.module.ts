@@ -13,6 +13,9 @@ import { LoginComponent } from './components/login/login.component';
 
 import { AuthGuard } from './auth/auth.guard';
 import { VistaUsuariosComponent } from './components/vista-usuarios/vista-usuarios.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,12 @@ import { VistaUsuariosComponent } from './components/vista-usuarios/vista-usuari
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }), // ToastrModule added
   ],
   providers: [
     AuthGuard
