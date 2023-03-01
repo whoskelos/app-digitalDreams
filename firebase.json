@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/app-all-find",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

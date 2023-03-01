@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "start": "node server/index.js",
     "dev": "nodemon server/index.js"
   },
   "private": true,
