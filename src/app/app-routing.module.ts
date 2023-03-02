@@ -33,7 +33,7 @@ const routes: Routes = [
     component: VistaUsuariosComponent,
     canActivate: [AuthGuard]
   },
-  { path: '**', pathMatch: 'full', redirectTo: '/auth/login' }
+  { path: '**', pathMatch: 'full', redirectTo: '/home' }
 ];
 
 @NgModule({

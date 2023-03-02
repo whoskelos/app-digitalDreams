@@ -21,36 +21,37 @@ export class LoginComponent implements OnInit {
 
   loading: boolean = false;
 
-  constructor(private authService: AuthService, 
-    private router:Router, 
-    private toastr: ToastrService, 
+  constructor(private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService,
     private errorService: ErrorService) { }
 
   ngOnInit(): void {
-      
+
   }
 
-  onLogin(f: NgForm) {     
+  onLogin(f: NgForm) {
     if (f.value.email == '' || f.value.password == '') {
       this.toastr.error('Todos los campos son obligatorios', 'Error');
-    }
-
-    const user: User = {
-      email: this.email,
-      password: this.password
-    }
-
-    this.loading = true;
-    this.authService.login(f.value).subscribe({
-      next: (token) => {
-        localStorage.setItem('token', token.accessToken);
-        this.router.navigate(['/home'])
-      },
-      error: (e: HttpErrorResponse) => {
-        this.errorService.msgError(e);
-        this.loading = false;
+    } else {
+      const user: User = {
+        email: this.email,
+        password: this.password
       }
-    })
+
+      this.loading = true;
+      this.authService.login(f.value).subscribe({
+        next: (token) => {
+          localStorage.setItem('token', token.accessToken);
+          this.router.navigate(['/home'])
+        },
+        error: (e: HttpErrorResponse) => {
+          this.errorService.msgError(e);
+          this.loading = false;
+        }
+      })
+    }
+
   }
 
 }

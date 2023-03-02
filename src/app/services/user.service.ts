@@ -6,7 +6,7 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class UserService {
-  api = "http://localhost:3000/api/users";
+  api = "https://fragrant-fire-8640.fly.dev/api/users";
 
   usuarioSeleccionado: User = {
     name: "",

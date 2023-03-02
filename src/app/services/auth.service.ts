@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class AuthService {
 
-  AUTH_SERVER: string = 'http://localhost:3000/api/users';
+  AUTH_SERVER: string = 'https://fragrant-fire-8640.fly.dev/api/users';
   authSubject = new BehaviorSubject(false);
   private token!: string;
 

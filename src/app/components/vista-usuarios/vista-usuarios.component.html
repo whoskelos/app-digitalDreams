@@ -1,12 +1,12 @@
 <div class="container">
-    <div class="row my-3">
-        <div class="col-md-4">
+    <div class="row flex-column flex-md-row my-3">
+        <div class="col-12 col-md-6">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a routerLink="/home" routerLinkActive="active">Home</a></li>
                 <li class="breadcrumb-item"><a routerLink="/equipos" routerLinkActive="active">Equipos</a></li>
                 <li class="breadcrumb-item"> <a routerLink="/usuarios" routerLinkActive="active">Usuarios</a></li>
             </ol>
-            <div class="card">
+            <div class="card mb-3 mb-md-0">
                 <div class="card-body">
                     <h1>Formulario</h1>
                     <form #formUsuario="ngForm" (ngSubmit)="addUsuario(formUsuario)" >
@@ -33,23 +33,23 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
-            <table class="table table-stripped">
+        <div class="col-12 col-md-6">
+            <table class="table">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
+                        <th class="d-none d-lg-table-cell">Nombre</th>
                         <th>Email</th>
-                        <th>Creado en</th>
+                        <th class="d-none d-xl-table-cell">Creado en</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let usuario of userService.usuarios">
-                        <td>{{ usuario.name }}</td>
+                        <td class="d-none d-lg-table-cell">{{ usuario.name }}</td>
                         <td>{{ usuario.email }}</td>
-                        <td>{{ usuario.createdAt | date }}</td>
+                        <td class="d-none d-xl-table-cell">{{ usuario.createdAt | date }}</td>
                         <td>
-                            <button type="button" (click)="editarUser(usuario)" class="btn btn-sm btn-light me-2"><i
+                            <button type="button" (click)="editarUser(usuario)" class="btn btn-sm btn-light me-2 mb-lg-1"><i
                                     class="fa-solid fa-pen-to-square"></i></button>
                             <button type="button" (click)="eliminarUser(usuario._id)" class="btn btn-sm btn-warning"><i
                                     class="fa-solid fa-trash-can"></i></button>

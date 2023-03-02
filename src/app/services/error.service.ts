@@ -13,7 +13,7 @@ export class ErrorService {
     if (e.error.msg) {
       this.toastr.error(e.error.msg,'Error');
     } else {
-      this.toastr.error('Oups! Ocurrio algo inesperado...', 'Error');
+      this.toastr.error(`${e.error.errors[0].msg} : ${e.error.errors[0].param} `,'Error');
     }
   }
 

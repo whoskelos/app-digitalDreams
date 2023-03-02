@@ -6,7 +6,7 @@ import { Equipo } from "../models/Equipo";
 })
 export class EquipoService {
 
-  api = "http://localhost:3000/api/equipos";
+  api = "https://fragrant-fire-8640.fly.dev/api/equipos";
 
   equipos !: Equipo[];
 

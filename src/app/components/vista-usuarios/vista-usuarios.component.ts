@@ -26,14 +26,20 @@ export class VistaUsuariosComponent implements OnInit {
 
   listarUsuarios() {
     this.userService.getUsuarios()
-      .subscribe(res => this.userService.usuarios = res);
+      .subscribe({
+        next: (res) => {
+          this.userService.usuarios = res;
+        },
+        error: (e) => {
+          this.errorService.msgError(e);
+        }
+      });
   }
 
   addUsuario(form: NgForm) {
     if (form.value.email == '' || form.value.password == '' || form.value.name == '') {
       this.toastr.error('Todos los campos son obligatorios', 'Error');
     } else {
-
       if (form.value._id) {
         this.userService.actualizarUsuario(form.value).subscribe({
           next: (res) => {
@@ -46,17 +52,21 @@ export class VistaUsuariosComponent implements OnInit {
           }
         })
       } else {
-        this.userService.crearUsuario(form.value)
-          .subscribe({
-            next: (res) => {
-              this.toastr.success(`Usuario ${form.value.email} creado correctamente`, 'Usuario Registrado');
-              this.listarUsuarios();
-              this.resetForm(form);
-            },
-            error: (e) => {
-              this.errorService.msgError(e);
-            }
-          });
+        if (form.value.email == '' || form.value.password == '' || form.value.name == '') {
+          this.toastr.error('Todos los campos son obligatorios', 'Error');
+        } else {
+          this.userService.crearUsuario(form.value)
+            .subscribe({
+              next: (res) => {
+                this.toastr.success(`Usuario ${form.value.email} creado correctamente`, 'Usuario Registrado');
+                this.listarUsuarios();
+                this.resetForm(form);
+              },
+              error: (e) => {
+                this.errorService.msgError(e);
+              }
+            });
+        }
       }
     }
 
@@ -74,12 +84,12 @@ export class VistaUsuariosComponent implements OnInit {
       if (result.isConfirmed) {
         this.userService.deleteUsuario(id)
           .subscribe(res => {
+            this.listarUsuarios();
             Swal.fire(
               'Eliminado!',
               'Usuario eliminado!',
               'success'
             )
-            this.listarUsuarios();
           });
       }
     });
