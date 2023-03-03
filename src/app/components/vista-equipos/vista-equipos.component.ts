@@ -50,5 +50,20 @@ export class VistaEquiposComponent {
     })
   }
 
+  //ordernar alfabeticamente
+  orderAlfa() {
+    this.equipos.sort((a,b) => (a.modelo > b.modelo) ? 1 : -1);
+  }
+
+  //ordernar por precio descendente
+  orderPrecioDesc() {
+    this.equipos.sort((a,b) => (b.precio > a.precio) ? 1 : -1);
+  }
+
+  //ordenar por ram de mas a menos
+  orderRAM() {
+    this.equipos.sort((a,b) => (b.ram > a.ram) ? 1 : -1);
+  }
+
 
 }

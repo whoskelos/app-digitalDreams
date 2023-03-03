@@ -21,37 +21,38 @@ export class RegisterComponent implements OnInit {
 
   loading: boolean = false;
 
-  constructor(private authService: AuthService, 
-    private router:Router, 
+  constructor(private authService: AuthService,
+    private router: Router,
     private toastr: ToastrService,
-    private errorService: ErrorService) {}
+    private errorService: ErrorService) { }
 
   ngOnInit(): void {
-      
+
   }
 
   onRegister(f: NgForm) {
     if (f.value.email == '' || f.value.password == '') {
       this.toastr.error('Todos los campos son obligatorios', 'Error');
-    }
-
-    const user: User = {
-      name: this.name,
-      email: this.email,
-      password: this.password
-    }
-    this.loading = true;
-
-    this.authService.register(user).subscribe({
-      next: (v) => {
-        this.loading = false;
-        this.toastr.success(`El usuario ${this.email} fue registrado con exito`, 'Usuario registrado');
-        this.router.navigateByUrl('/login');
-      },
-      error: (e) => {
-        this.loading = false;
-        this.errorService.msgError(e);
+    } else {
+      const user: User = {
+        name: this.name,
+        email: this.email,
+        password: this.password
       }
-    })
+      this.loading = true;
+
+      this.authService.register(user).subscribe({
+        next: (v) => {
+          this.loading = false;
+          this.toastr.success(`El usuario ${this.email} fue registrado con exito`, 'Usuario registrado');
+          this.router.navigateByUrl('/login');
+        },
+        error: (e) => {
+          this.loading = false;
+          this.errorService.msgError(e);
+        }
+      })
+    }
   }
+
 }

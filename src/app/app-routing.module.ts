@@ -8,7 +8,7 @@ import { EquipoComponent } from './components/equipo/equipo.component';
 import { VistaUsuariosComponent } from './components/vista-usuarios/vista-usuarios.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
