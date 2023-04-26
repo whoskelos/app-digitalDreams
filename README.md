@@ -29,3 +29,17 @@ Visit the API here 👉🏻 [Check the API](https://github.com/whoskelos/digital
 ## Database 💾
 * **MongoDB Atlas**
 
+## Visit the website 🌐
+[Digital Dreams](https://ddreams.whoskelos.es "Go to Dashboard")
+
+## Screenshots
+### Login
+![Login screenshot](/src/assets/img/login_sc.png)
+### Home
+![Home screenshot](/src/assets/img/home_sc.png)
+
+## Devices
+![Devices screenshot](/src/assets/img/equipos_sc.png)
+## Users
+![Users screenshot](/src/assets/img/usuarios_sc.png)
+
