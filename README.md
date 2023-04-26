@@ -18,11 +18,11 @@ A dashboard with a basic authentication login system where you can manage device
 * **Angular**
 
 ## Backend ⚙️
-* Node.js
-* Express
-* Mongoose
-* express-validator
-* JWT
+* **Node.js**
+* **Express**
+* **Mongoose**
+* **express-validator**
+* **JWT**
 
 Visit the API here 👉🏻 [Check the API](https://github.com/whoskelos/digitalDreams-api "API Digital Dreams")
 
